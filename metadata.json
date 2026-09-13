@@ -1,0 +1,6 @@
+{
+  "name": "APK Editor",
+  "description": "Classic and traditional APK Editor to inspect, clone, replace files, edit manifest, and extract APKs",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
