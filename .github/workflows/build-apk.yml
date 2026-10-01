@@ -27,12 +27,17 @@ jobs:
 
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v3
+        with:
+          gradle-version: '8.13'
 
-      - name: Ensure gradlew wrapper exists and is executable
+      - name: Prepare build environment and keystore
         run: |
-          if [ ! -f "gradlew" ]; then
-            gradle wrapper
+          if [ -f "debug.keystore.base64" ] && [ ! -f "debug.keystore" ]; then
+            base64 -d debug.keystore.base64 > debug.keystore || true
           fi
+          touch .env
+          touch .env.example
+          gradle wrapper --gradle-version 8.13
           chmod +x gradlew
 
       - name: Build Debug APK
