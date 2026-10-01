@@ -49,17 +49,3 @@ jobs:
           name: ApkEditor-Debug-APK
           path: app/build/outputs/apk/debug/*.apk
           retention-days: 30
-
-      - name: Release APK (Automatic)
-        if: github.event_name == 'workflow_dispatch' || github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
-        uses: softprops/action-gh-release@v2
-        with:
-          tag_name: v1.0.${{ github.run_number }}
-          name: APK Editor Pro v1.0.${{ github.run_number }}
-          body: |
-            ## 📱 APK Editor Android App
-            Baixe o arquivo **app-debug.apk** abaixo diretamente no seu celular e instale!
-          files: app/build/outputs/apk/debug/*.apk
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        continue-on-error: true
